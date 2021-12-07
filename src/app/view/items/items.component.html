@@ -1,0 +1,109 @@
+<h2>Items</h2>
+
+<button mat-fab color="primary" class="fabAdd" (click)="criar()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<div>
+  <mat-table [dataSource]="items" matSort>
+    <!-- TR -->
+    <ng-container matColumnDef="nomeItem">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Nome do Item
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let item">
+        {{item.nomeItem}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- TR -->
+    <ng-container matColumnDef="nomeJogo">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Jogo
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let item">
+        {{item.nomeJogo}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- TR -->
+    <ng-container matColumnDef="valor">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Valor
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let item">
+        {{item.valor}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- TR -->
+    <ng-container matColumnDef="actions">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Ações
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let item">
+        <button mat-icon-button (click)="select(item)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" (click)="confirmar(item.id)">
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" routerLink="/venda" (click)="passarIdItem(item.id)" >
+          <mat-icon>attach_money</mat-icon>
+        </button>
+
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns"></mat-row>
+
+  </mat-table>
+ </div>
+
+<div *ngIf="selectedItem" class="editUsuario">
+  <h2 *ngIf="!inserting">Editar Item</h2>
+  <h2 *ngIf="inserting">Novo Item</h2>
+
+  <mat-form-field class="formField">
+    <mat-label>Nome do Item</mat-label>
+    <input matInput [(ngModel)]="selectedItem.nomeItem">
+  </mat-form-field>
+
+  <mat-form-field class="formField">
+    <mat-label>Jogo</mat-label>
+    <input matInput [(ngModel)]="selectedItem.nomeJogo">
+  </mat-form-field>
+
+  <mat-form-field class="formField">
+    <mat-label>Descrição</mat-label>
+    <input matInput [(ngModel)]="selectedItem.descricao">
+  </mat-form-field>
+
+  <mat-form-field class="formField">
+    <mat-label>Valor</mat-label>
+    <input matInput type="number" [(ngModel)]="selectedItem.valor">
+  </mat-form-field>
+  <br><br>
+
+  <button mat-raised-button color="accent" class="btn" (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="salvar()" class="btn btnAction">Salvar</button>
+</div>

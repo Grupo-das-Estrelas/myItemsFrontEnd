@@ -1,0 +1,110 @@
+<h2>Compras Realizadas</h2>
+
+<div *ngIf="selectedVenda" class="editUsuario">
+
+  <h2 *ngIf="inserting">Nova Venda</h2>
+  <mat-form-field class="formField">
+    <mat-label>Item(ID)</mat-label>
+    <input matInput
+    placeholder = {{this.idItemService.idItemServico}}
+    [(ngModel)]="selectedVenda.id_item"
+    value = {{this.idItemService.idItemServico}} >
+  </mat-form-field>
+
+  <mat-form-field class="formField">
+    <mat-label>Usuário(ID)</mat-label>
+    <input matInput type="number" [(ngModel)]="selectedVenda.id_usuario">
+  </mat-form-field>
+
+  <mat-form-field class="formField">
+    <mat-label>Forma de Pagamento(ID)</mat-label>
+    <input matInput type="number" [(ngModel)]="selectedVenda.id_pagamento">
+  </mat-form-field>
+
+  <mat-form-field class="formField">
+    <mat-label>Quantidade</mat-label>
+    <input matInput type="number" [(ngModel)]="selectedVenda.quantidade">
+  </mat-form-field>
+  <br><br>
+
+  <button mat-raised-button color="accent" class="btn" (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="salvar()" class="btn btnAction">Salvar</button>
+</div>
+
+ <div>
+  <mat-table [dataSource]="vendas">
+    <!-- TR -->
+    <ng-container matColumnDef="id_venda">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        ID da Venda
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let venda">
+        {{venda.id_venda}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- TR -->
+    <ng-container matColumnDef="id_usuario">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        ID do Usuario
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let venda">
+        {{venda.id_usuario}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- TR -->
+    <ng-container matColumnDef="id_item">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        ID do Item
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let venda">
+        {{venda.id_item}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- TR -->
+    <ng-container matColumnDef="id_pagamento">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        ID da Forma Pagamento
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let venda">
+        {{venda.id_pagamento}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- TR -->
+    <ng-container matColumnDef="quantidade">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        Quantidade
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let venda">
+        {{venda.quantidade}}
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns"></mat-row>
+
+  </mat-table>
+ </div>

@@ -1,0 +1,21 @@
+.formField{
+  width: 100%;
+}
+
+.btnAction{
+  margin-left: 10px;
+}
+
+.btn{
+  width: 100px;
+}
+
+.editUsuario{
+  margin-top: 5vh;
+}
+
+.fabAdd{
+  position: fixed;
+  right: 3vw;
+  bottom: 5vh;
+}

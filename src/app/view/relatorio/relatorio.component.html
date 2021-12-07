@@ -1,0 +1,93 @@
+<h2>Compras Realizadas</h2>
+
+<button mat-fab color="primary" class="fabBack" routerLink="/relatorios">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+
+
+<div>
+  <mat-table [dataSource]="relatorio1">
+<!-- TR -->
+<ng-container matColumnDef="id_venda">
+
+  <!-- TH -->
+  <mat-header-cell *matHeaderCellDef>
+    ID da Venda
+  </mat-header-cell>
+
+  <!-- TD -->
+  <mat-cell *matCellDef="let relatorio1">
+    {{relatorio1.id_venda}}
+  </mat-cell>
+</ng-container>
+
+    <!-- TR -->
+    <ng-container matColumnDef="nome">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        Nome do Cliente
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let relatorio1">
+        {{relatorio1.nome}}
+      </mat-cell>
+    </ng-container>
+
+
+
+    <!-- TR -->
+    <ng-container matColumnDef="id_item">
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        ID do Item
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let relatorio1">
+        {{relatorio1.idItem}}
+      </mat-cell>
+
+    <!-- TR -->
+    <ng-container matColumnDef="nomeItem">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        Nome do Item
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let relatorio1">
+        {{relatorio1.nomeItem}}
+      </mat-cell>
+
+    <!-- TR -->
+    <ng-container matColumnDef="valor">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        Valor
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let relatorio1">
+        {{relatorio1.valor}}
+      </mat-cell>
+
+      <!-- TR -->
+    <ng-container matColumnDef="quantidade">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        Quantidade
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let relatorio1">
+        {{relatorio1.quantidade}}
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns"></mat-row>

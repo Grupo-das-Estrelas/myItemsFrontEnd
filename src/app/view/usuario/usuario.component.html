@@ -1,0 +1,87 @@
+<h2>Usuários</h2>
+
+<button mat-fab color="primary" class="fabAdd" (click)="criar()">
+  <mat-icon>add</mat-icon>
+</button>
+
+
+ <div>
+  <mat-table [dataSource]="usuarios">
+    <!-- TR -->
+    <ng-container matColumnDef="nome">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        Nome
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let usuario">
+        {{usuario.nome}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- TR -->
+    <ng-container matColumnDef="saldo">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        Saldo
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let usuario">
+        {{usuario.saldo}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- TR -->
+    <ng-container matColumnDef="actions">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        Ações
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let usuario">
+        <button mat-icon-button (click)="select(usuario)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" (click)="confirmar(usuario.id)">
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns"></mat-row>
+
+  </mat-table>
+ </div>
+
+<div *ngIf="selectedUser" class="editUsuario">
+  <h2 *ngIf="!inserting">Editar Usuário</h2>
+  <h2 *ngIf="inserting">Novo Usuário</h2>
+
+  <mat-form-field class="formField">
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="selectedUser.nome">
+  </mat-form-field>
+
+  <mat-form-field class="formField">
+    <mat-label>Saldo</mat-label>
+    <input matInput type="number" [(ngModel)]="selectedUser.saldo">
+  </mat-form-field>
+
+  <mat-form-field class="formField">
+    <mat-label>Senha</mat-label>
+    <input matInput type="password" [(ngModel)]="selectedUser.senha">
+  </mat-form-field>
+  <br><br>
+
+  <button mat-raised-button color="accent" class="btn" (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="salvar()" class="btn btnAction">Salvar</button>
+</div>

@@ -1,0 +1,77 @@
+<h2>Formas de Pagamento</h2>
+
+<button mat-fab color="primary" class="fabAdd" (click)="criar()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<div>
+  <mat-table [dataSource]="pagamentos">
+    <!-- TR -->
+    <ng-container matColumnDef="idPagamento">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        ID do Pagamento
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let pagamento">
+        {{pagamento.idPagamento}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- TR -->
+    <ng-container matColumnDef="tipoPagamento">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        Tipo do Pagamento
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let pagamento">
+        {{pagamento.tipoPagamento}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- TR -->
+    <ng-container matColumnDef="actions">
+
+      <!-- TH -->
+      <mat-header-cell *matHeaderCellDef>
+        Ações
+      </mat-header-cell>
+
+      <!-- TD -->
+      <mat-cell *matCellDef="let pagamento">
+        <button mat-icon-button (click)="select(pagamento)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" (click)="confirmar(pagamento.idPagamento)">
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns"></mat-row>
+
+  </mat-table>
+ </div>
+
+<div *ngIf="selectedPagamento" class="editUsuario">
+  <h2 *ngIf="!inserting">Editar Pagamento</h2>
+  <h2 *ngIf="inserting">Novo Pagamento</h2>
+
+  <mat-form-field class="formField">
+    <mat-label>Tipo do pagamento</mat-label>
+    <input matInput [(ngModel)]="selectedPagamento.tipoPagamento">
+  </mat-form-field>
+  <br><br>
+
+  <button mat-raised-button color="accent" class="btn" (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="salvar()" class="btn btnAction">Salvar</button>
+</div>
+

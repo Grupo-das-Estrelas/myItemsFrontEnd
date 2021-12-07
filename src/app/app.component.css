@@ -1,0 +1,19 @@
+
+
+.sidenav{
+  width: 9vw;
+}
+
+.menu-icon{
+  margin-right: 0.5vw;
+}
+
+.title{
+  margin-left: 45vw;
+}
+
+.mat-sidenav-content{
+  background-image: url("../assets/myitemslogo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}

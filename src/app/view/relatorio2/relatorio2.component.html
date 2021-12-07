@@ -1,0 +1,40 @@
+<h2>Items de maior preço</h2>
+
+<button mat-fab color="primary" class="fabBack" routerLink="/relatorios">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+
+<div>
+  <mat-table [dataSource]="relatorio">
+<!-- TR -->
+<ng-container matColumnDef="nomeItem">
+
+  <!-- TH -->
+  <mat-header-cell *matHeaderCellDef>
+    Nome do Item
+  </mat-header-cell>
+
+  <!-- TD -->
+  <mat-cell *matCellDef="let relatorio2">
+    {{relatorio2.nomeItem}}
+  </mat-cell>
+</ng-container>
+
+    <!-- TR -->
+
+<ng-container matColumnDef="valor">
+
+  <!-- TH -->
+  <mat-header-cell *matHeaderCellDef>
+    Valor
+  </mat-header-cell>
+
+  <!-- TD -->
+  <mat-cell *matCellDef="let relatorio2">
+    {{relatorio2.valor}}
+  </mat-cell>
+</ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns"></mat-row>
